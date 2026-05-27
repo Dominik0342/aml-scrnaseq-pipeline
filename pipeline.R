@@ -9,7 +9,7 @@
 
 
 # =============================================================
-# PARAMETERS - EDIT THESE
+# PARAMETERS 
 # =============================================================
 
 # Input file: .dem.txt / .tsv / .csv (genes in rows, cells in columns)
