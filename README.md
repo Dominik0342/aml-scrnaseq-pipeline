@@ -22,37 +22,6 @@ Given a single-cell count matrix, the pipeline:
 - About 10 GB of free disk space
 - Git installed on your machine (see next section if needed)
 
-## Getting the repository on your machine
-
-### Option 1 — With Git (recommended)
-
-If you don't have Git installed yet:
-
-- **Windows**: download from [git-scm.com/download/win](https://git-scm.com/download/win)
-- **macOS**: open Terminal and type `git --version` (it will offer to install if missing), or download from [git-scm.com/download/mac](https://git-scm.com/download/mac)
-- **Linux (Ubuntu/Debian)**: `sudo apt install git`
-
-Then clone the repository from your terminal:
-
-```bash
-git clone https://github.com/YOUR_USERNAME/aml-scrnaseq-pipeline.git
-cd aml-scrnaseq-pipeline
-```
-
-This downloads all the files into a local folder you can work with.
-
-### Option 2 — Without Git (download ZIP)
-
-If you prefer not to install Git:
-
-1. Go to the GitHub page of this repository
-2. Click the green **Code** button
-3. Click **Download ZIP**
-4. Unzip the file on your machine
-5. Open a terminal inside the unzipped folder
-
-That's it — you're ready to install the dependencies (next step).
-
 ## Installation
 
 Once you have the repository on your machine, install the R dependencies:
