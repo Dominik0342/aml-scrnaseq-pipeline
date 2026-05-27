@@ -83,6 +83,3 @@ The format is detected from the file extension.
 Dominik Souillac, supervised by Dr. Dominik Beck.
 University of Technology Sydney, 2026.
 
-## License
-
-MIT
