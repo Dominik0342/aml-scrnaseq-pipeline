@@ -65,7 +65,7 @@ The format is detected from the file extension.
 
 | File | Description |
 |------|-------------|
-| `figures/01_QC_violins.png` | QC metrics before filtering |
+| `figures/01_QC_nFeature.png` | Distribution of genes per cell with QC thresholds |
 | `figures/02_passfail.png` | Pass/Fail mapping summary |
 | `figures/03_UMAP_celltype.png` | UMAP coloured by predicted cell type |
 | `figures/04_UMAP_pseudotime.png` | UMAP coloured by pseudotime |
