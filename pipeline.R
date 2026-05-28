@@ -94,12 +94,29 @@ cat("  Loaded:", ncol(seu), "cells x", nrow(seu), "genes\n")
 cat("\n>>> Quality control...\n")
 seu[["percent.mt"]] <- PercentageFeatureSet(seu, pattern = "^MT-")
 
-# Figure: QC violins before filtering
-p_qc <- VlnPlot(seu, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"),
-                ncol = 3, pt.size = 0.1) +
-  plot_annotation(title = paste0(SAMPLE_ID, " - QC before filtering"))
-ggsave(file.path(fig_dir, "01_QC_violins.png"),
-       p_qc, width = 12, height = 4, dpi = 200, bg = "white")
+# Figure: nFeature_RNA histogram with QC thresholds
+qc_data <- seu@meta.data
+n_in  <- sum(qc_data$nFeature_RNA >= MIN_NFEATURE & qc_data$nFeature_RNA <= MAX_NFEATURE)
+n_out <- sum(qc_data$nFeature_RNA <  MIN_NFEATURE | qc_data$nFeature_RNA >  MAX_NFEATURE)
+
+p_qc <- ggplot(qc_data, aes(x = nFeature_RNA)) +
+  geom_histogram(bins = 50, fill = "#3498DB", color = "white", linewidth = 0.2) +
+  geom_vline(xintercept = MIN_NFEATURE, color = "#E74C3C", linewidth = 1, linetype = "dashed") +
+  geom_vline(xintercept = MAX_NFEATURE, color = "#E74C3C", linewidth = 1, linetype = "dashed") +
+  annotate("text", x = MIN_NFEATURE, y = Inf, label = paste0(" min = ", MIN_NFEATURE),
+           vjust = 1.5, hjust = 0, color = "#E74C3C", fontface = "bold", size = 4) +
+  annotate("text", x = MAX_NFEATURE, y = Inf, label = paste0("max = ", MAX_NFEATURE, " "),
+           vjust = 1.5, hjust = 1, color = "#E74C3C", fontface = "bold", size = 4) +
+  labs(title = paste0(SAMPLE_ID, " - QC on nFeature_RNA before filtering"),
+       subtitle = paste0("Kept: ", n_in, " cells   |   Filtered out: ", n_out, " cells"),
+       x = "Number of genes detected per cell",
+       y = "Number of cells") +
+  theme_classic(base_size = 12) +
+  theme(plot.title = element_text(face = "bold", hjust = 0.5),
+        plot.subtitle = element_text(color = "gray30", hjust = 0.5))
+
+ggsave(file.path(fig_dir, "01_QC_nFeature.png"),
+       p_qc, width = 9, height = 5, dpi = 200, bg = "white")
 
 # Filtering
 n_before <- ncol(seu)
