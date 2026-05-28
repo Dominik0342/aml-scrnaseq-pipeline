@@ -1,7 +1,7 @@
 # =============================================================
 # AML scRNA-seq pipeline - main script
 # Author: Dominik Souillac
-# Supervisor: Dr. Dominik Beck (UTS)
+# Supervisor: Dr. Dominik Beck 
 # =============================================================
 # Usage: Rscript pipeline.R
 # Edit the parameters in the section below, then run.
