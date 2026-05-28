@@ -18,13 +18,10 @@ Given a single-cell count matrix, the pipeline:
 ## Requirements
 
 - R version 4.5 or higher
-- At least 16 GB of RAM (BoneMarrowMap reference is ~5 GB)
-- About 10 GB of free disk space
-- Git installed on your machine (see next section if needed)
 
 ## Installation
 
-Once you have the repository on your machine, install the R dependencies:
+install the R dependencies:
 
 ```bash
 Rscript install_packages.R
